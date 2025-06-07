@@ -9,7 +9,6 @@
 - Django Rest Framework
 - Django Filter (用于过滤)
 - SimpleJWT (用于认证)
-- Pillow (用于图片处理)
 - SQLite(数据库)
 
 ### 功能模块

@@ -39,7 +39,7 @@
     <view class="section-title">开发者信息</view>
     <view class="info-item">
       <text class="info-label">开发团队：</text>
-      <text class="info-value">TechQA Team(ZJH & YM)</text>
+      <text class="info-value">TechQA Team(Charlie & YM)</text>
     </view>
   </view>
   
