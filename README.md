@@ -1746,7 +1746,7 @@ pkill gunicorn
 服务地址：
 
 ```
-http://101.201.174.43:8000/
+http://localhost:8000/
 ```
 
 ### requirements.txt
