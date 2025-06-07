@@ -1,0 +1,19 @@
+<view class="container">
+  <view wx:if="{{questions.length > 0}}">
+    <block wx:for="{{questions}}" wx:key="id">
+      <view class="question-item" bindtap="navigateToQuestion" data-id="{{item.id}}">
+        <view class="question-title">{{item.title}}</view>
+        <view class="question-meta">
+          <text>{{item.views}} 浏览</text>
+          <text>{{item.answers_count}} 回答</text>
+          <text>{{item.votes}} 赞</text>
+        </view>
+        <view class="question-date">{{item.created_at}}</view>
+      </view>
+    </block>
+  </view>
+
+  <view wx:if="{{isLoading && page > 1}}" class="loading">加载中...</view>
+  <view wx:if="{{!hasMore && questions.length > 0}}" class="no-more">没有更多了</view>
+  <view wx:if="{{questions.length === 0 && !isLoading}}" class="empty">暂无提问</view>
+</view>

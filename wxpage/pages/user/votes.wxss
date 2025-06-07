@@ -1,0 +1,128 @@
+/* pages/user/votes.wxss */
+.container {
+    padding: 15px;
+    min-height: 100vh;
+    background-color: #f8f8f8;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #f0f0f0;
+    margin-bottom: 15px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 0 15px;
+    box-shadow: 0 1px 3px rgba(192, 0, 0, 0.05);
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 15px;
+    color: #666;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.tab.active {
+    color: #C00000;
+    font-weight: bold;
+}
+
+.tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 3px;
+    background: #C00000;
+    border-radius: 3px 3px 0 0;
+}
+
+.vote-list {
+    margin-bottom: 20px;
+}
+
+.vote-item {
+    background: #fff;
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(192, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    transition: transform 0.2s;
+}
+
+.vote-item:active {
+    transform: scale(0.98);
+}
+
+.vote-type {
+    font-size: 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.vote-type::before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.vote-type.up {
+    color: #C00000;
+}
+
+.vote-type.up::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23C00000"><path d="M12 8l-6 6h12z"/></svg>');
+}
+
+.vote-type.down {
+    color: #8C0000;
+}
+
+.vote-type.down::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238C0000"><path d="M12 16l6-6H6z"/></svg>');
+}
+
+.vote-content {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    padding-left: 22px;
+    line-height: 1.6;
+}
+
+.vote-date {
+    font-size: 12px;
+    color: #8C0000;
+    text-align: right;
+    padding-top: 6px;
+    border-top: 1px dashed #f0f0f0;
+}
+
+.loading,
+.empty {
+    text-align: center;
+    padding: 30px 20px;
+    color: #8C0000;
+    font-size: 14px;
+}
+
+.empty::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 15px;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238C0000"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>') no-repeat center;
+    opacity: 0.6;
+}

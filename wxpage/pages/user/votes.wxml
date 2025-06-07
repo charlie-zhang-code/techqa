@@ -1,0 +1,35 @@
+<view class="container">
+    <!-- 选项卡 -->
+    <view class="tabs">
+        <view class="tab {{activeTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">
+            全部
+        </view>
+        <view class="tab {{activeTab === 'up' ? 'active' : ''}}" bindtap="switchTab" data-tab="up">
+            赞同
+        </view>
+        <view class="tab {{activeTab === 'down' ? 'active' : ''}}" bindtap="switchTab" data-tab="down">
+            反对
+        </view>
+    </view>
+
+    <!-- 投票列表 -->
+    <view class="vote-list">
+        <block wx:for="{{filteredVotes}}" wx:key="id">
+            <view class="vote-item" bindtap="navigateToTarget" data-vote="{{item}}">
+                <view class="vote-type {{item.vote_type}}">
+                    <text>{{item.vote_type === 'up' ? '赞同' : '反对'}}</text>
+                </view>
+                <view class="vote-content">
+                    <text wx:if="{{item.question}}">{{item.question.title}}</text>
+                    <text wx:if="{{item.answer}}">{{item.answer.content.substring(0, 50)}}...</text>
+                </view>
+                <view class="vote-date">{{item.created_at}}</view>
+            </view>
+        </block>
+    </view>
+
+    <view wx:if="{{isLoading}}" class="loading">加载中...</view>
+    <view wx:if="{{!isLoading && filteredVotes.length === 0}}" class="empty">
+        {{activeTab === 'all' ? '暂无投票记录' : activeTab === 'up' ? '暂无赞同记录' : '暂无反对记录'}}
+    </view>
+</view>

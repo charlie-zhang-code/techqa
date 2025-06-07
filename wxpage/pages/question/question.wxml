@@ -1,0 +1,142 @@
+<view class="container">
+    <!-- 问题详情 -->
+    <view class="question-section" wx:if="{{question}}">
+        <view class="question-title">{{question.title}}</view>
+
+        <view class="question-meta">
+            <view class="author-info">
+                <image class="avatar" src="{{question.author.avatar || '/images/default-avatar.png'}}"></image>
+                <text class="username">{{question.author.username}}</text>
+            </view>
+            <view class="meta-info">
+                <text>{{question.views}} 浏览</text>
+                <text>{{question.answers_count}} 回答</text>
+                <!-- <text>{{question.votes}} 赞</text> -->
+            </view>
+
+            <!-- 对问题进行 vote -->
+            <!-- <view class="vote-buttons">
+                <button class="mbutton1 vote-btn up {{question.user_vote === 'up' ? 'active' : ''}}" bindtap="voteQuestion" data-id="{{question.id}}" data-type="up">
+                    赞同 {{question.votes > 0 ? question.votes : ''}}
+                </button>
+                <button class="mbutton1 vote-btn down {{question.user_vote === 'down' ? 'active' : ''}}" bindtap="voteQuestion" data-id="{{question.id}}" data-type="down">
+                    反对
+                </button>
+            </view> -->
+        </view>
+
+        <view class="question-content">{{question.content}}</view>
+
+        <view class="question-tags">
+            <block wx:for="{{question.tags}}" wx:key="id">
+                <text class="tag">{{item.name}}</text>
+            </block>
+        </view>
+    </view>
+
+    <!-- 选项卡 -->
+    <view class="tabs">
+        <view class="tab {{activeTab === 'answers' ? 'active' : ''}}" bindtap="switchTab" data-tab="answers">
+            回答({{question ? question.answers_count : 0}})
+        </view>
+        <view class="tab {{activeTab === 'comments' ? 'active' : ''}}" bindtap="switchTab" data-tab="comments">
+            评论({{comments.length}})
+        </view>
+    </view>
+
+    <!-- 回答列表 -->
+    <view class="content-section" wx:if="{{activeTab === 'answers'}}">
+        <block wx:for="{{answers}}" wx:key="id">
+            <view class="answer-item {{item.is_accepted ? 'accepted' : ''}}">
+                <view class="answer-header">
+                    <image class="avatar" src="{{item.author.avatar || '/images/default-avatar.png'}}"></image>
+                    <text class="username">{{item.author.username}}</text>
+                    <text class="time">{{item.created_at}}</text>
+                </view>
+
+                <view class="answer-content">{{item.content}}</view>
+
+                <view class="answer-footer">
+                    <view class="mbutton vote-buttons">
+                        <button class="vote-btn up {{item.user_vote === 'up' ? 'active' : ''}}" bindtap="voteAnswer" data-id="{{item.id}}" data-type="up">
+                            赞同 {{item.votes > 0 ? item.votes : ''}}
+                        </button>
+                        <button class="vote-btn down {{item.user_vote === 'down' ? 'active' : ''}}" bindtap="voteAnswer" data-id="{{item.id}}" data-type="down">
+                            反对
+                        </button>
+                    </view>
+
+                    <!-- 问题作者可以采纳回答 -->
+                    <!-- <view wx:if="{{isOwner}}">
+                        <button class="mbutton accept-btn {{item.is_accepted ? 'active' : ''}}" bindtap="acceptAnswer" data-id="{{item.id}}" data-accept="{{!item.is_accepted}}">
+                            {{item.is_accepted ? '已采纳' : '采纳'}}
+                        </button>
+                    </view> -->
+                </view>
+            </view>
+        </block>
+
+        <view wx:if="{{loading}}" class="loading">加载中...</view>
+        <view wx:if="{{!hasMore && answers.length > 0}}" class="no-more">没有更多了</view>
+        <view wx:if="{{answers.length === 0 && !loading}}" class="empty">暂无回答</view>
+    </view>
+
+    <!-- 评论列表 -->
+    <view class="content-section" wx:if="{{activeTab === 'comments'}}">
+        <block wx:for="{{comments}}" wx:key="id">
+            <view class="comment-item">
+                <image class="avatar" src="{{item.author.avatar || '/images/default-avatar.png'}}"></image>
+                <view class="comment-content">
+                    <view class="comment-header">
+                        <text class="username">{{item.author.username}}</text>
+                        <text class="time">{{item.created_at}}</text>
+                    </view>
+                    <view class="comment-text">
+                        <text wx:if="{{item.reply_to}}">回复 @{{item.reply_to.author.username}}: </text>
+                        {{item.content}}
+                    </view>
+                    <view class="comment-actions">
+                        <text class="reply-btn" bindtap="replyComment" data-id="{{item.id}}" data-username="{{item.author.username}}">回复</text>
+                    </view>
+
+                    <!-- 回复列表 -->
+                    <block wx:if="{{item.replies && item.replies.length > 0}}">
+                        <view class="replies">
+                            <block wx:for="{{item.replies}}" wx:key="id">
+                                <view class="reply-item">
+                                    <image class="avatar" src="{{item.author.avatar || '/images/default-avatar.png'}}"></image>
+                                    <view class="reply-content">
+                                        <view class="reply-header">
+                                            <text class="username">{{item.author.username}}</text>
+                                            <text class="time">{{item.created_at}}</text>
+                                        </view>
+                                        <view class="reply-text">
+                                            回复 @{{item.reply_to.author.username}}: {{item.content}}
+                                        </view>
+                                        <view class="comment-actions">
+                                            <text class="reply-btn" bindtap="replyComment" data-id="{{item.id}}" data-username="{{item.author.username}}">回复</text>
+                                        </view>
+                                    </view>
+                                </view>
+                            </block>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </block>
+
+        <view wx:if="{{comments.length === 0 && !loading}}" class="empty">暂无评论</view>
+    </view>
+
+    <!-- 回答输入框 -->
+    <view class="input-section" wx:if="{{activeTab === 'answers'}}">
+        <textarea placeholder="写下你的回答..." value="{{newAnswerContent}}" bindinput="handleAnswerInput"></textarea>
+        <button class="submit-btn" bindtap="submitAnswer">提交回答</button>
+    </view>
+
+    <!-- 评论输入框 -->
+    <view class="input-section" wx:if="{{activeTab === 'comments'}}">
+        <textarea placeholder="{{replyTo ? '回复 @' + replyTo : '写下你的评论...'}}" value="{{newCommentContent}}" bindinput="handleCommentInput"></textarea>
+        <button class="submit-btn" bindtap="submitComment">提交评论</button>
+    </view>
+</view>

@@ -1,0 +1,45 @@
+/* pages/user/questions.wxss */
+.container {
+    padding: 15px;
+    min-height: 100vh;
+    background-color: #f9f5f5;
+  }
+  
+  .question-item {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .question-meta {
+    display: flex;
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+  }
+  
+  .question-meta text {
+    margin-right: 15px;
+  }
+  
+  .question-date {
+    font-size: 12px;
+    color: #999;
+  }
+  
+  .loading,
+  .no-more,
+  .empty {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+  }

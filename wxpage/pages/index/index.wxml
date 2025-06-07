@@ -1,0 +1,63 @@
+<view class="container">
+    <!-- 搜索框 -->
+    <view class="search-bar" bindtap="navigateToSearch">
+        <icon type="search" size="16" color="#999"></icon>
+        <text class="search-text">搜索问题或标签</text>
+    </view>
+
+    <!-- 轮播图 -->
+    <swiper class="banner" indicator-dots autoplay interval="3000" duration="500">
+        <block wx:for="{{banners}}" wx:key="id">
+            <swiper-item>
+                <image src="{{item.image_url}}" mode="aspectFill" class="banner-image"></image>
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <!-- 热门标签 -->
+    <view class="section">
+        <view class="section-title">热门标签</view>
+        <view class="tags">
+            <block wx:for="{{popularTags}}" wx:key="id">
+                <view class="tag" bindtap="navigateToTag" data-name="{{item.name}}">{{item.name}}</view>
+            </block>
+        </view>
+    </view>
+
+    <!-- 问题列表 -->
+    <view class="section">
+        <view class="section-title">最新问题</view>
+        <block wx:for="{{questions}}" wx:key="id">
+            <view class="question-card" bindtap="navigateToQuestion" data-id="{{item.id}}">
+                <view class="question-title">{{item.title}}</view>
+                <view class="question-meta">
+                    <view class="question-metaq">
+                        <view class="avatar-con">
+                            <image class="avatar" src="{{item.author.avatar || '/images/default-avatar.png'}}"></image>
+                            <text class="username">{{item.author.username}}</text>
+                        </view>
+                        <text>{{item.views}} 浏览</text>
+                        <text>{{item.answers_count}} 回答</text>
+                    </view>
+                    <text>{{item.created_at}} 发布</text>
+                </view>
+                <view class="question-tags">
+                    <block wx:for="{{item.tags.slice(0, 3)}}" wx:key="id">
+                        <text class="tag">{{item.name}}</text>
+                    </block>
+                </view>
+            </view>
+        </block>
+
+        <!-- 加载状态 -->
+        <view wx:if="{{isLoading && page > 1}}" class="loading">加载中...</view>
+        <view wx:if="{{error}}" class="error no-more">{{error}}</view>
+        <view wx:if="{{!hasMore && questions.length > 0}}" class="no-more">没有更多了</view>
+        <view wx:if="{{questions.length === 0 && !isLoading}}" class="empty">暂无问题</view>
+    </view>
+
+    <!-- 提问按钮 -->
+    <!-- <view class="fab" bindtap="onAskTap">
+        <image src="/images/add.png" class="fab-icon"></image>
+    </view> -->
+</view>

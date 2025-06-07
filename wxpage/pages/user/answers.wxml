@@ -1,0 +1,21 @@
+<view class="container">
+  <view wx:if="{{answers.length > 0}}">
+    <block wx:for="{{answers}}" wx:key="id">
+      <view class="answer-item">
+        <view class="answer-content">{{item.content.length > 50 ? item.content.substring(0, 50) + '...' : item.content}}</view>
+        <view class="answer-meta">
+          <text>{{item.votes}} 赞</text>
+          <text wx:if="{{item.is_accepted}}" class="accepted">已采纳</text>
+          <text>{{item.created_at}}</text>
+        </view>
+        <view class="question-link" bindtap="navigateToQuestion" data-question-id="{{item.question}}">
+          查看问题
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view wx:if="{{isLoading && page > 1}}" class="loading">加载中...</view>
+  <view wx:if="{{!hasMore && answers.length > 0}}" class="no-more">没有更多了</view>
+  <view wx:if="{{answers.length === 0 && !isLoading}}" class="empty">暂无回答</view>
+</view>

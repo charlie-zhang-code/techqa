@@ -1,0 +1,42 @@
+<!-- pages/notifications/notifications.wxml -->
+<view class="container">
+  <!-- 顶部操作栏 -->
+  <view class="action-bar">
+    <text>未读通知: {{unreadCount}}</text>
+    <button 
+      size="mini" 
+      bindtap="markAllAsRead"
+      loading="{{isMarkingAll}}"
+      disabled="{{unreadCount === 0 || isMarkingAll}}"
+    >
+      全部标记已读
+    </button>
+  </view>
+
+  <!-- 通知列表 -->
+  <view wx:if="{{!isLoading && notifications.length > 0}}" class="notification-list">
+    <block wx:for="{{notifications}}" wx:key="id">
+      <view 
+        class="notification-item {{!item.is_read ? 'unread' : ''}}" 
+        bindtap="navigateToTarget"
+        data-notification="{{item}}"
+      >
+        <view class="notification-type">
+            {{item.typeText}}
+        </view>
+        <view class="notification-content">
+          <text class="actor">{{item.actor.username}}</text>
+          <text>{{item.notificationText}}</text>
+        </view>
+        <view class="notification-time">
+          {{item.created_at}}
+        </view>
+        <view wx:if="{{!item.is_read}}" class="unread-dot"></view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{isLoading}}" class="loading">加载中...</view>
+  <view wx:if="{{!isLoading && notifications.length === 0}}" class="empty">暂无通知</view>
+</view>

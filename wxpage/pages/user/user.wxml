@@ -1,0 +1,57 @@
+<view class="container">
+  <!-- 用户信息卡片 -->
+  <view class="user-card" wx:if="{{userInfo}}">
+    <view class="user-header">
+      <image class="avatar" src="{{userInfo.avatar || '/images/default-avatar.png'}}"></image>
+      <view class="user-info">
+        <text class="username">{{userInfo.username}}</text>
+        <!-- <text class="reputation">声望: {{stats.reputation}}</text> -->
+      </view>
+    </view>
+    
+    <view class="stats">
+      <view class="stat-item" bindtap="navigateToMyQuestions">
+        <text class="stat-value">{{stats.questionsCount}}</text>
+        <text class="stat-label">提问</text>
+      </view>
+      <view class="stat-item" bindtap="navigateToMyAnswers">
+        <text class="stat-value">{{stats.answersCount}}</text>
+        <text class="stat-label">回答</text>
+      </view>
+      <view class="stat-item" bindtap="navigateToMyVotes">
+        <text class="stat-value">{{stats.votesCount}}</text>
+        <text class="stat-label">认可</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能列表 -->
+  <view class="menu-list">
+    <view class="menu-item" bindtap="navigateToMyQuestions">
+      <image class="menu-icon" src="/images/ask.png"></image>
+      <text>我的提问</text>
+      <icon type="arrow-right" size="16"></icon>
+    </view>
+    <view class="menu-item" bindtap="navigateToMyAnswers">
+      <image class="menu-icon" src="/images/answer.png"></image>
+      <text>我的回答</text>
+      <icon type="arrow-right" size="16"></icon>
+    </view>
+    <view class="menu-item" bindtap="navigateToMyVotes">
+      <image class="menu-icon" src="/images/up.png"></image>
+      <text>我的认可</text>
+      <icon type="arrow-right" size="16"></icon>
+    </view>
+    <view class="menu-item" bindtap="navigateToAbout">
+      <image class="menu-icon" src="/images/view.png"></image>
+      <text>关于</text>
+      <icon type="arrow-right" size="16"></icon>
+    </view>
+  </view>
+
+  <view wx:if="{{isLoading}}" class="loading">加载中...</view>
+
+  <view class="version-info">
+    <text>当前版本: v1.0.0</text>
+  </view>
+</view>

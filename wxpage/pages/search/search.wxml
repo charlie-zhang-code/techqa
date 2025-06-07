@@ -1,0 +1,83 @@
+<!-- pages/search/search.wxml -->
+<view class="container">
+    <!-- 搜索框 -->
+    <view class="search-bar">
+        <icon type="search" size="16" color="#999"></icon>
+        <input placeholder="{{activeTab === 'question' ? '搜索问题' : '搜索标签'}}" value="{{searchText}}" bindinput="onSearchInput" confirm-type="search" bindconfirm="search" />
+        <button class="search-btn" bindtap="search">搜索</button>
+    </view>
+
+    <!-- 选项卡 -->
+    <view class="tabs">
+        <view class="tab {{activeTab === 'question' ? 'active' : ''}}" bindtap="switchTab" data-tab="question">
+            问题
+        </view>
+        <view class="tab {{activeTab === 'tag' ? 'active' : ''}}" bindtap="switchTab" data-tab="tag">
+            标签
+        </view>
+    </view>
+
+    <!-- 搜索结果 -->
+    <view class="search-results">
+        <!-- 问题搜索结果 -->
+        <block wx:if="{{activeTab === 'question'}}">
+            <block wx:if="{{questions.length > 0}}">
+                <block wx:for="{{questions}}" wx:key="id">
+                    <view class="question-item" bindtap="navigateToQuestion" data-id="{{item.id}}">
+                        <view class="question-title">{{item.title}}</view>
+                        <view class="question-meta">
+                            <text>{{item.author.username}}</text>
+                            <text>{{item.views}}浏览</text>
+                            <text>{{item.answers_count}}回答</text>
+                        </view>
+                        <view class="question-tags">
+                            <block wx:for="{{item.tags.slice(0, 3)}}" wx:key="id">
+                                <text class="tag">{{item.name}}</text>
+                            </block>
+                        </view>
+                    </view>
+                </block>
+            </block>
+            <view wx:else class="empty">
+                {{searchText ? '没有找到相关问题' : '请输入搜索内容'}}
+            </view>
+        </block>
+
+        <!-- 标签搜索结果 -->
+        <block wx:if="{{activeTab === 'tag'}}">
+            <block wx:if="{{tags.length > 0}}">
+                <view class="tags-container">
+                    <block wx:for="{{tags}}" wx:key="id">
+                        <view class="tag {{selectedTag == item.name ? 'active' : ''}}" bindtap="navigateToTag" data-name="{{item.name}}">
+                            {{item.name}}
+                            <text wx:if="{{item.usage_count}}" class="count">{{item.usage_count}}</text>
+                        </view>
+                    </block>
+                </view>
+
+                <!-- 选中标签后显示相关问题 -->
+                <block wx:if="{{selectedTag && questions.length > 0}}">
+                    <view class="section-title">相关问题</view>
+                    <block wx:for="{{questions}}" wx:key="id">
+                        <view class="question-item" bindtap="navigateToQuestion" data-id="{{item.id}}">
+                            <view class="question-title">{{item.title}}</view>
+                            <view class="question-meta">
+                                <text>{{item.author.username}}</text>
+                                <text>{{item.views}}浏览</text>
+                                <text>{{item.answers_count}}回答</text>
+                            </view>
+                        </view>
+                    </block>
+                </block>
+                <view wx:if="{{selectedTag && questions.length === 0}}" class="empty">
+                    没有找到相关问题
+                </view>
+            </block>
+            <view wx:else class="empty">
+                {{searchText ? '没有找到相关标签' : '请输入标签名称'}}
+            </view>
+        </block>
+    </view>
+
+    <view wx:if="{{isLoading}}" class="loading">加载中...</view>
+</view>

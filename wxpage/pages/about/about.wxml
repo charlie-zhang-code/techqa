@@ -1,0 +1,51 @@
+<!-- pages/about/about.wxml -->
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">关于技术问答社区</text>
+  </view>
+  
+  <!-- 应用信息卡片 -->
+  <view class="card">
+    <image class="logo" src="/images/up.png"></image>
+    <text class="app-name">TechQA</text>
+    <text class="version">版本 1.0.0</text>
+    <text class="slogan">程序员的技术交流社区</text>
+  </view>
+  
+  <!-- 功能介绍 -->
+  <view class="section">
+    <view class="section-title">功能介绍</view>
+    <view class="feature-item">
+      <icon type="info-circle" size="16" color="#1890ff"></icon>
+      <text>技术问题提问与解答</text>
+    </view>
+    <view class="feature-item">
+      <icon type="info-circle" size="16" color="#1890ff"></icon>
+      <text>专业标签分类管理</text>
+    </view>
+    <view class="feature-item">
+      <icon type="info-circle" size="16" color="#1890ff"></icon>
+      <text>投票与最佳答案采纳</text>
+    </view>
+    <view class="feature-item">
+      <icon type="info-circle" size="16" color="#1890ff"></icon>
+      <text>实时通知系统</text>
+    </view>
+  </view>
+  
+  <!-- 开发者信息 -->
+  <view class="section">
+    <view class="section-title">开发者信息</view>
+    <view class="info-item">
+      <text class="info-label">开发团队：</text>
+      <text class="info-value">TechQA Team(ZJH & YM)</text>
+    </view>
+  </view>
+  
+  <!-- 版权信息 -->
+  <view class="footer">
+    <text>© 2025 TechQA 技术问答平台</text>
+    <text>All Rights Reserved</text>
+  </view>
+</view>
