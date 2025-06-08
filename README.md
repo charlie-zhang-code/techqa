@@ -1,5 +1,7 @@
 # Django技术问答平台后端设计（对接微信小程序）
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
+
 一个类似Stack Overflow的技术问答平台后端，使用Django Rest Framework (DRF)实现，并支持微信小程序对接。
 
 ## 系统设计与架构
