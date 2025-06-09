@@ -5,7 +5,7 @@
 [![Django](https://img.shields.io/badge/Django-4.x-green.svg)](https://www.djangoproject.com/)
 [![DRF](https://img.shields.io/badge/DRF-3.14-red.svg)](https://www.django-rest-framework.org/)
 
-一个类似Stack Overflow的编程技术问答平台后端，使用Django Rest Framework (DRF)实现，并支持微信小程序对接。
+一个类似Stack Overflow的编程技术问答社区微信小程序，后端使用Django Rest Framework (DRF)实现，原生微信小程序完成前端。
 
 ## ✨ 功能特性
 
