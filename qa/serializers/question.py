@@ -15,6 +15,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     comments_count = serializers.SerializerMethodField()
     user_vote = serializers.SerializerMethodField()
     is_following = serializers.SerializerMethodField()
+    hot_score = serializers.FloatField(read_only=True)
     created_at = serializers.SerializerMethodField()
 
     class Meta:
@@ -22,7 +23,7 @@ class QuestionSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'content', 'author', 'tags', 'views', 'votes',
             'created_at', 'updated_at', 'has_accepted_answer', 'is_anonymous',
-            'answers', 'answers_count', 'comments_count', 'user_vote', 'is_following'
+            'answers', 'answers_count', 'comments_count', 'user_vote', 'is_following', 'hot_score'
         ]
         read_only_fields = fields
 

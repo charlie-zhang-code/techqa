@@ -1,97 +1,124 @@
-/* pages/ask/ask.wxss */
+/* 整体容器 */
 .container {
-    padding: 15px;
-    background-color: #f9f5f5;
-    height: 100vh;
-}
-
-.form-item {
-    margin-bottom: 20px;
-}
-
-.form-item input,
-.form-item textarea {
+    background-color: #f6f6f6;
+    min-height: 100vh;
+  }
+  
+  /* 表单项通用样式 */
+  .form-item {
+    margin-bottom: 30rpx;
+    background-color: #ffffff;
+    border-radius: 16rpx;
+    padding: 24rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  }
+  
+  /* 输入框样式 */
+  .form-item input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #e0c7c7;
-    /* 浅红色边框 */
-    border-radius: 4px;
-    margin-bottom: 10px;
-    background-color: #fff;
-    transition: border-color 0.3s;
-}
-
-.form-item input:focus,
-.form-item textarea:focus {
-    border-color: #C00000;
-    /* 聚焦时使用主色 */
-    outline: none;
-}
-
-.form-item textarea {
-    min-height: 150px;
-}
-
-.picker {
-    padding: 10px;
-    border: 1px solid #e0c7c7;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    background-color: #fff;
-}
-
-.tags-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 10px;
-}
-
-.tag {
+    height: 80rpx;
+    font-size: 30rpx;
+    color: #333;
+    padding: 0 10rpx;
+    box-sizing: border-box;
+    border: 1rpx solid #eaeaea;
+    border-radius: 8rpx;
+  }
+  
+  /* 文本域样式 */
+  .form-item textarea {
+    width: 100%;
+    font-size: 30rpx;
+    color: #333;
+    padding: 20rpx 10rpx;
+    box-sizing: border-box;
+    min-height: 200rpx;
+    line-height: 1.6;
+    border: 1rpx solid #eaeaea;
+    border-radius: 8rpx;
+  }
+  
+  /* 标签选择器样式 */
+  .form-item .picker {
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 30rpx;
+    color: #666;
+    border: 1rpx solid #eaeaea;
+    border-radius: 8rpx;
+    padding: 0 20rpx;
     display: flex;
     align-items: center;
-    padding: 4px 10px;
-    background: linear-gradient(135deg, #f8e0e0, #f0c0c0);
-    /* 红色渐变背景 */
-    border-radius: 15px;
-    font-size: 12px;
-    color: #900000;
-    /* 深红色文字 */
-    border: 1px solid #e0a0a0;
-}
-
-.tag.active {
-    background: linear-gradient(135deg, #f0c0c0, #C00000);
-    /* 选中状态使用更强烈的红色渐变 */
-    color: white;
-    font-weight: bold;
-}
-
-switch {
-    margin-right: 10px;
-}
-
-button {
-    margin-top: 20px;
-    background: linear-gradient(to right, #C00000, #e00000);
-    /* 红色渐变按钮 */
-    color: white;
+    margin-bottom: 20rpx;
+  }
+  
+  /* 标签容器样式 */
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20rpx;
+  }
+  
+  /* 单个标签样式 */
+  .tag {
+    font-size: 26rpx;
+    color: #4a90e2;
+    background-color: #e8f3fc;
+    padding: 10rpx 20rpx;
+    border-radius: 30rpx;
+    margin-right: 16rpx;
+    margin-bottom: 16rpx;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* 标签删除图标样式 */
+  .tag icon {
+    margin-left: 8rpx;
+    padding: 4rpx;
+  }
+  
+  /* 新标签输入框样式 */
+  .form-item input[type="text"] {
+    border: 1rpx solid #eaeaea;
+    border-radius: 8rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+  }
+  
+  /* 提交按钮样式 - 单独定义类以增强样式控制 */
+  .submit-btn {
+    width: 100%;
+    height: 90rpx;
+    line-height: 90rpx;  /* 确保行高与高度相同，这是文本垂直居中的关键 */
+    font-size: 32rpx;
+    border-radius: 45rpx;
+    margin-top: 40rpx;
+    background-color: #4a90e2;
+    box-shadow: 0 4rpx 12rpx rgba(74, 144, 226, 0.3);
+    font-weight: 500;
+    display: flex;           /* 添加flex布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center;     /* 垂直居中 */
+    color: #fff;
+  }
+  
+  .submit-btn::after {
     border: none;
-    border-radius: 25px;
-    padding: 12px 24px;
-    font-weight: bold;
-    box-shadow: 0 2px 6px rgba(192, 0, 0, 0.2);
-    transition: all 0.3s;
-}
-
-button:hover {
-    background: linear-gradient(to right, #a00000, #C00000);
-    /* 悬停时加深红色 */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(192, 0, 0, 0.3);
-}
-
-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(192, 0, 0, 0.2);
-}
+  }
+  
+  .submit-btn[loading] {
+    opacity: 0.8;
+  }
+  
+  /* 输入框聚焦状态 */
+  .form-item input:focus,
+  .form-item textarea:focus {
+    border-color: #4a90e2;
+  }
+  
+  /* 占位符文字样式 */
+  .form-item input::placeholder,
+  .form-item textarea::placeholder {
+    color: #ccc;
+  }

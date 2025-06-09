@@ -1,347 +1,393 @@
-/* pages/question/question.wxss */
+/* 整体容器 */
 .container {
-    padding: 15px;
-    padding-bottom: 100px;
-    background-color: #f9f5f5; /* 浅红色背景 */
-  }
-  
-  .mbutton {
-    width: 120px !important;
-    color: white;
-    border-radius: 25px;
-  }
-  
-  .mbutton1 {
-    width: 60px !important;
-    background: #f0c0c0;
-    color: #900000;
-    border-radius: 15px;
-  }
-  
-  .question-section {
-    background: #fff;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 3px 10px rgba(192, 0, 0, 0.08);
-    border: 1px solid #f0e0e0;
-  }
-  
-  .question-title {
-    font-size: 19px;
+    background-color: #f6f6f6;
+    min-height: 100vh;
+}
+
+/* 问题区域样式 */
+.question-section {
+    background-color: #ffffff;
+    border-radius: 12rpx;
+    padding: 30rpx;
+    margin-bottom: 20rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.question-title {
+    font-size: 36rpx;
     font-weight: bold;
-    margin-bottom: 12px;
-    color: #222;
+    color: #333;
+    margin-bottom: 20rpx;
     line-height: 1.4;
-  }
-  
-  .question-meta {
+}
+
+.question-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
-    font-size: 13px;
-    color: #a00000;
-  }
-  
-  .author-info {
+    margin-bottom: 20rpx;
+    flex-wrap: wrap;
+}
+
+.author-info {
     display: flex;
     align-items: center;
-  }
-  
-  .avatar {
-    width: 28px;
-    height: 28px;
+}
+
+.avatar {
+    width: 60rpx;
+    height: 60rpx;
     border-radius: 50%;
-    margin-right: 10px;
-    border: 1px solid #f0c0c0;
-  }
-  
-  .username {
-    margin-right: 12px;
-    color: #900000;
+    margin-right: 15rpx;
+}
+
+.username {
+    font-size: 28rpx;
+    color: #576b95;
     font-weight: 500;
-  }
-  
-  .meta-info text {
-    margin-left: 12px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .meta-info icon {
-    margin-right: 3px;
-  }
-  
-  .question-content {
-    font-size: 15px;
-    line-height: 1.8;
-    margin-bottom: 15px;
-    color: #333;
-  }
-  
-  .question-tags {
+}
+
+.meta-info {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.meta-info text {
+    margin-left: 20rpx;
+}
+
+.question-content {
+    font-size: 30rpx;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20rpx;
+    white-space: pre-wrap;
+}
+
+.question-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-  }
-  
-  .tag {
-    padding: 4px 12px;
-    background: linear-gradient(135deg, #f8e0e0, #f0c0c0);
-    border-radius: 15px;
-    font-size: 12px;
-    color: #900000;
-    border: 1px solid #e0a0a0;
-  }
-  
-  .tabs {
+    margin-top: 20rpx;
+}
+
+.tag {
+    background-color: #e1ecff;
+    color: #576b95;
+    font-size: 24rpx;
+    padding: 6rpx 16rpx;
+    border-radius: 30rpx;
+    margin-right: 15rpx;
+    margin-bottom: 15rpx;
+}
+
+/* 标签页样式 */
+.tabs {
     display: flex;
-    border-bottom: 1px solid #e0c7c7;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  
-  .tab {
+    background-color: #ffffff;
+    border-radius: 12rpx;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.tab {
     flex: 1;
     text-align: center;
-    padding: 12px 0;
-    font-size: 15px;
+    padding: 25rpx 0;
+    font-size: 30rpx;
     color: #666;
     position: relative;
-  }
-  
-  .tab.active {
-    color: #C00000;
+}
+
+.tab.active {
+    color: #4a90e2;
     font-weight: bold;
-  }
-  
-  .tab.active::after {
+}
+
+.tab.active::after {
     content: '';
     position: absolute;
-    bottom: -1px;
+    bottom: 0;
     left: 25%;
     width: 50%;
-    height: 3px;
-    background: #C00000;
-    border-radius: 3px 3px 0 0;
-  }
-  
-  .content-section {
-    margin-bottom: 200px;
-  }
-  
-  .answer-item {
-    background: #fff;
-    padding: 18px;
-    border-radius: 12px;
-    margin-bottom: 15px;
-    box-shadow: 0 3px 10px rgba(192, 0, 0, 0.05);
-    border: 1px solid #f0e0e0;
-    transition: transform 0.3s;
-  }
-  
-  .answer-item:active {
-    transform: translateY(2px);
-  }
-  
-  .answer-item.accepted {
-    border-left: 4px solid #C00000;
-    background: #fff9f9;
-  }
-  
-  .answer-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .answer-content {
-    font-size: 15px;
-    line-height: 1.8;
-    margin-bottom: 12px;
-    color: #333;
-  }
-  
-  .answer-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .vote-buttons {
-    display: flex;
-    gap: 12px;
-  }
-  
-  .vote-btn {
-    font-size: 13px;
-    padding: 0 12px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 14px;
-    background: #f8e0e0;
-    color: #900000;
-    border: none;
-  }
-  
-  .vote-btn.up.active {
-    background: linear-gradient(to bottom, #f0f0ff, #e0e0ff);
-    color: #4051b5;
-  }
-  
-  .vote-btn.down.active {
-    background: linear-gradient(to bottom, #ffe0e0, #ffc0c0);
-    color: #d00000;
-  }
-  
-  .accept-btn {
-    font-size: 13px;
-    padding: 0 15px;
-    height: 28px;
-    line-height: 28px;
-    border-radius: 14px;
-    background: #f8e0e0;
-    color: #900000;
-    border: none;
-  }
-  
-  .accept-btn.active {
-    background: linear-gradient(to right, #C00000, #e00000);
-    color: white;
-  }
-  
-  .comment-item {
-    display: flex;
-    background: #fff;
-    padding: 12px;
-    border-radius: 8px;
-    margin-bottom: 12px;
-    box-shadow: 0 1px 5px rgba(192, 0, 0, 0.05);
-  }
-  
-  .comment-content {
-    flex: 1;
-    margin-left: 10px;
-  }
-  
-  .comment-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 6px;
-    font-size: 13px;
-    color: #a00000;
-  }
-  
-  .comment-header .username {
-    margin-right: 10px;
-    color: #C00000;
-    font-weight: 500;
-  }
-  
-  .comment-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333;
-  }
-  
-  .comment-actions {
-    margin-top: 8px;
-  }
-  
-  .reply-btn {
-    font-size: 12px;
-    color: #C00000;
-    padding: 2px 6px;
-    border-radius: 4px;
-  }
-  
-  .replies {
-    margin-top: 12px;
-    padding-left: 12px;
-    border-left: 1px dashed #e0c7c7;
-  }
-  
-  .reply-item {
-    display: flex;
-    margin-bottom: 12px;
-  }
-  
-  .reply-content {
-    flex: 1;
-    margin-left: 10px;
-  }
-  
-  .reply-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 6px;
-    font-size: 13px;
-    color: #a00000;
-  }
-  
-  .reply-header .username {
-    margin-right: 10px;
-    color: #C00000;
-    font-weight: 500;
-  }
-  
-  .reply-text {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #333;
-  }
-  
-  .input-section {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #fff;
-    padding: 15px;
-    border-top: 1px solid #e0c7c7;
-    box-shadow: 0 -3px 15px rgba(192, 0, 0, 0.1);
-  }
-  
-  .input-section textarea {
+    height: 6rpx;
+    background-color: #4a90e2;
+    border-radius: 3rpx;
+}
+
+/* 输入区域样式 */
+.input-section {
+    background-color: #ffffff;
+    border-radius: 12rpx;
+    padding: 20rpx;
+    margin-bottom: 20rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.input-section textarea {
     width: 100%;
-    height: 90px;
-    padding: 12px;
-    border: 1px solid #e0c7c7;
-    border-radius: 8px;
-    font-size: 15px;
-    margin-bottom: 12px;
-    transition: border-color 0.3s;
-  }
-  
-  .input-section textarea:focus {
-    border-color: #C00000;
-    outline: none;
-  }
-  
-  .submit-btn {
-    background: linear-gradient(to right, #C00000, #e00000);
-    color: #fff;
+    height: 200rpx;
+    background-color: #f9f9f9;
+    border-radius: 8rpx;
+    padding: 20rpx;
+    font-size: 28rpx;
+    color: #333;
+    box-sizing: border-box;
+    margin-bottom: 20rpx;
+}
+
+.submit-btn {
+    background-color: #4a90e2;
+    color: white;
+    font-size: 30rpx;
+    border-radius: 40rpx;
+    padding: 12rpx 0;
+    width: 100%;
     border: none;
-    border-radius: 25px;
-    font-size: 15px;
-    height: 42px;
-    line-height: 42px;
-    box-shadow: 0 2px 6px rgba(192, 0, 0, 0.2);
-  }
-  
-  .loading,
-  .no-more,
-  .empty {
+}
+
+.submit-btn:active {
+    opacity: 0.8;
+}
+
+/* 内容区域样式 */
+.content-section {
+    background-color: #ffffff;
+    border-radius: 12rpx;
+    padding: 20rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 回答项样式 */
+.answer-item {
+    padding: 25rpx 0;
+    border-bottom: 1rpx solid #eee;
+}
+
+.answer-item:last-child {
+    border-bottom: none;
+}
+
+.answer-item.accepted {
+    background-color: #f9fff9;
+}
+
+.answer-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20rpx;
+}
+
+.answer-header .avatar {
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 15rpx;
+}
+
+.answer-header .username {
+    font-size: 28rpx;
+    color: #576b95;
+    font-weight: 500;
+    margin-right: 20rpx;
+}
+
+.answer-header .time {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.answer-content {
+    font-size: 30rpx;
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    margin-bottom: 20rpx;
+}
+
+.answer-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.vote-buttons {
+    display: flex;
+}
+
+.vote-btn {
+    font-size: 26rpx;
+    padding: 8rpx 20rpx;
+    margin-left: 15rpx;
+    background-color: #f5f5f5;
+    color: #666;
+    border-radius: 6rpx;
+    border: none;
+}
+
+.vote-btn.up.active {
+    background-color: #e1f5e1;
+    color: #1aad19;
+}
+
+.vote-btn.down.active {
+    background-color: #f5e1e1;
+    color: #ad2f19;
+}
+
+/* 评论项整体样式 */
+.comment-item {
+    padding: 24rpx 0;
+    border-bottom: 1rpx solid #f0f0f0;
+    position: relative;
+}
+
+.comment-item:last-child {
+    border-bottom: none;
+}
+
+/* 评论者信息区域 */
+.comment-content {
+    margin-left: 80rpx;
+    /* 头像宽度 + 间距 */
+    position: relative;
+}
+
+.comment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12rpx;
+}
+
+.comment-header .avatar {
+    width: 60rpx;
+    height: 60rpx;
+    border-radius: 50%;
+    position: absolute;
+    left: -70rpx;
+    /* 负值使头像位于文字左侧 */
+}
+
+.comment-header .username {
+    font-size: 30rpx;
+    color: #576b95;
+    font-weight: 500;
+    margin-right: 20rpx;
+}
+
+.comment-header .time {
+    font-size: 24rpx;
+    color: #999;
+}
+
+/* 评论内容文本 */
+.comment-text {
+    font-size: 30rpx;
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    margin-bottom: 16rpx;
+}
+
+/* 评论操作按钮区域 */
+.comment-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.reply-btn {
+    font-size: 26rpx;
+    color: #576b95;
+    padding: 8rpx 24rpx;
+    border: 1rpx solid #eaeaea;
+    border-radius: 30rpx;
+    background-color: #f9f9f9;
+}
+
+.reply-btn:active {
+    background-color: #f0f0f0;
+}
+
+/* 回复列表样式 - 优化后的嵌套回复 */
+.replies {
+    margin-top: 24rpx;
+    padding-top: 24rpx;
+    padding-left: 10rpx;
+    /* 减少左侧内边距 */
+    border-top: 1rpx dashed #eee;
+}
+
+.reply-item {
+    display: flex;
+    margin-bottom: 20rpx;
+    /* 减少间距 */
+    padding: 12rpx 16rpx;
+    /* 减少内边距 */
+    background-color: #f9f9f9;
+    border-radius: 8rpx;
+}
+
+.reply-item .avatar {
+    width: 44rpx;
+    /* 稍微减小头像尺寸 */
+    height: 44rpx;
+    border-radius: 50%;
+    margin-right: 10rpx;
+    /* 减少间距 */
+}
+
+.reply-content {
+    flex: 1;
+}
+
+.reply-header {
+    display: flex;
+    align-items: center;
+    font-size: 26rpx;
+    color: #888;
+    margin-bottom: 6rpx;
+}
+
+.reply-header .username {
+    color: #576b95;
+    margin-right: 8rpx;
+    font-weight: 500;
+}
+
+.reply-text {
+    font-size: 28rpx;
+    color: #444;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-width: 100%;
+    /* 防止文本溢出 */
+}
+
+/* 二级及更深层级的回复 - 进一步减少缩进 */
+.replies .replies {
+    padding-left: 5rpx;
+    /* 更小的缩进 */
+}
+
+.replies .replies .reply-item {
+    padding: 10rpx 14rpx;
+    /* 更紧凑的内边距 */
+    margin-bottom: 16rpx;
+    /* 更小的间距 */
+}
+
+.replies .replies .reply-item .avatar {
+    width: 40rpx;
+    /* 更小的头像 */
+    height: 40rpx;
+    margin-right: 8rpx;
+}
+
+/* 加载状态样式 */
+.loading,
+.no-more,
+.empty {
     text-align: center;
-    padding: 20px;
-    color: #a00000;
-    font-size: 15px;
-  }
-  
-  .empty icon {
-    display: block;
-    font-size: 50px;
-    margin-bottom: 15px;
-    color: #e0a0a0;
-  }
+    padding: 30rpx 0;
+    font-size: 28rpx;
+    color: #999;
+}

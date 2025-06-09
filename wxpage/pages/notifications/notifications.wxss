@@ -1,133 +1,130 @@
-/* pages/notifications/notifications.wxss */
+/* 整体容器 */
 .container {
-    background-color: #f9f5f5;
-    height: 100vh;
-    padding: 15px;
+    background-color: #f6f6f6;
+    min-height: 100vh;
 }
 
+/* 顶部操作栏 */
 .action-bar {
     display: flex;
+    width: 100vw;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 16px;
-    background: #fff;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 8px rgba(192, 0, 0, 0.05);
-    border: 1px solid #f0f0f0;
+    background-color: #ffffff;
+    border-radius: 16rpx;
+    margin-bottom: 30rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
 }
-
+.action-bar text {
+    flex: 1 1 0%;
+    padding: 20rpx;
+}
 .action-bar button {
-    margin: 0;
-    background: #ffe6e6;
-    color: #C00000;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    padding: 6px 12px;
+    margin-right: 20rpx;
+    width: 240rpx;
+    font-size: 32rpx;
+    border-radius: 45rpx;
+    background-color: #4a90e2;
+    box-shadow: 0 4rpx 12rpx rgba(74, 144, 226, 0.3);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 24rpx;
 }
 
-.action-bar button:active {
-    background: #ffcccc;
+.action-bar text {
+    font-size: 28rpx;
+    color: #333;
+    font-weight: 500;
+    height: 60rpx;
+    line-height: 60rpx;
 }
 
+.action-bar button[disabled] {
+    background-color: #cccccc;
+    color: #ffffff;
+}
+
+/* 通知列表 */
 .notification-list {
+    width: 100%;
+}
+
+/* 单个通知项 */
+.notification-item {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-}
-
-.notification-item {
+    padding: 30rpx;
+    background-color: #ffffff;
+    border-radius: 16rpx;
+    margin-bottom: 20rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
     position: relative;
-    background: #fff;
-    padding: 16px;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(192, 0, 0, 0.05);
-    border-left: 3px solid #fff;
-    transition: all 0.3s;
 }
 
+/* 未读通知的样式 */
 .notification-item.unread {
-    background: #fff9f9;
-    border-left-color: #C00000;
+    background-color: #f0f7ff;
+    /* 浅蓝色背景表示未读 */
 }
 
-.notification-item:active {
-    transform: scale(0.98);
+/* 未读标记点 */
+.unread-dot {
+    position: absolute;
+    top: 30rpx;
+    right: 30rpx;
+    width: 16rpx;
+    height: 16rpx;
+    background-color: #4a90e2;
+    border-radius: 50%;
 }
 
+/* 通知类型 */
 .notification-type {
-    font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    color: #C00000;
-    display: flex;
-    align-items: center;
-}
-
-.notification-type::before {
-    content: "";
+    font-size: 24rpx;
+    color: #4a90e2;
+    margin-bottom: 10rpx;
+    padding: 4rpx 12rpx;
+    background-color: #e8f3fc;
+    border-radius: 20rpx;
     display: inline-block;
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
-.notification-type.reply::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23C00000"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>');
-}
-
-.notification-type.like::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23C00000"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
-}
-
+/* 通知内容 */
 .notification-content {
-    font-size: 14px;
-    line-height: 1.6;
-    color: #666;
-    margin-bottom: 8px;
-    padding-left: 24px;
+    margin-bottom: 16rpx;
+    line-height: 1.5;
 }
 
 .notification-content .actor {
-    color: #C00000;
-    font-weight: 500;
-    margin-right: 5px;
+    font-weight: bold;
+    color: #333;
+    margin-right: 10rpx;
 }
 
+.notification-content text {
+    font-size: 30rpx;
+    color: #333;
+}
+
+/* 通知时间 */
 .notification-time {
-    font-size: 12px;
-    color: #8C0000;
-    padding-left: 24px;
+    font-size: 24rpx;
+    color: #999;
+    text-align: right;
 }
 
-.unread-dot {
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #C00000;
-    box-shadow: 0 0 0 2px #ffe6e6;
-}
-
+/* 加载状态 */
 .loading,
 .empty {
     text-align: center;
-    padding: 30px 20px;
-    color: #8C0000;
-    font-size: 14px;
+    padding: 40rpx 0;
+    font-size: 28rpx;
+    color: #999;
 }
 
-.empty::before {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 60px;
-    margin: 0 auto 15px;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%238C0000"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-2a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z"/></svg>') no-repeat center;
-    opacity: 0.6;
+.empty {
+    color: #ccc;
 }

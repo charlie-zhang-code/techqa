@@ -54,6 +54,7 @@ export const createQuestion = (data) => request('questions/', 'POST', data);
 export const updateQuestion = (questionId, data) => request(`questions/${questionId}/`, 'PATCH', data);
 export const voteQuestion = (questionId, voteType) => request(`questions/${questionId}/vote/`, 'POST', { vote_type: voteType });
 export const incrementViews = (questionId) => request(`questions/${questionId}/increment_views/`, 'POST');
+export const getHotQuestions = () => request('questions/hot/', 'GET');
 
 // 投票相关
 export const getMyVote = () => request(`votes/my_votes/`, 'GET');
@@ -109,5 +110,6 @@ export default {
   markAllAsRead,
   getBanners,
   getMyVote,
-  getUserAnswers
+  getUserAnswers,
+  getHotQuestions
 };

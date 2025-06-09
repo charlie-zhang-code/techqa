@@ -16,12 +16,16 @@
     <view class="vote-list">
         <block wx:for="{{filteredVotes}}" wx:key="id">
             <view class="vote-item" bindtap="navigateToTarget" data-vote="{{item}}">
+                <view class="vote-the-type">
+                    <text wx:if="{{item.question}}">题目</text>
+                    <text wx:if="{{item.answer}}">回答</text>
+                </view>
                 <view class="vote-type {{item.vote_type}}">
                     <text>{{item.vote_type === 'up' ? '赞同' : '反对'}}</text>
                 </view>
                 <view class="vote-content">
                     <text wx:if="{{item.question}}">{{item.question.title}}</text>
-                    <text wx:if="{{item.answer}}">{{item.answer.content.substring(0, 50)}}...</text>
+                    <text class="vote-content-answer" wx:if="{{item.answer}}">{{item.answer.content}}</text>
                 </view>
                 <view class="vote-date">{{item.created_at}}</view>
             </view>

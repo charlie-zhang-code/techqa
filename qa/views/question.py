@@ -79,3 +79,11 @@ class QuestionViewSet(viewsets.ModelViewSet):
         comments = Comment.objects.filter(question=question)
         serializer = CommentSerializer(comments, many=True, context=self.get_serializer_context())
         return Response(serializer.data)
+
+    @action(detail=False, methods=['get'])
+    def hot(self, request):
+        """获取热门问题列表"""
+        queryset = self.filter_queryset(self.get_queryset())
+        queryset = queryset.order_by('-hot_score')[:10]  # 取前20个热门问题
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
